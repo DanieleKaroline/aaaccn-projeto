@@ -15,66 +15,121 @@
  * limitations under the License.
  */
 package carvalho.aaaccn.model;
-
 import java.io.Serializable;
 
-import javax.persistence.Column;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.Digits;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotEmpty;
 
 @SuppressWarnings("serial")
 @Entity
 
-@Table(uniqueConstraints = @UniqueConstraint(columnNames = "email"))
+
 public class Product implements Serializable {
 
     @Id
     @NotNull
-    @Size(min = 10, max = 10)
-    private Long matricula;
+    private Integer id;
     
     @NotNull
-    @Size(min = 11, max = 11)
-    private Long cpf;
-
+    private Integer qtde;
+  
     @NotNull
     @Size(min = 1, max = 100)
-    @Pattern(regexp = "[^0-9]*", message = "Must not contain numbers")
     private String nome;
+    
+    @NotNull
+    @Size(min = 1, max = 150)
+    private String descricao;
+    
+    @NotNull
+    private Double tamanho;
+    
+    @NotNull
+    private String cor;
+    
+    @NotNull
+    private String modelo;
+    
+    @NotNull
+    private Double valor;
+    
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    private Estoque estoque;
+    
+    public Estoque getEstoque() {
+		return estoque;
+	}
 
-    @NotNull
-    @NotEmpty
-    @Email
-    private String email;
-    
-    @NotNull
-    @NotEmpty
-    private String endereco;
-    
-    @NotNull
-    @NotEmpty
-    private String curso;
-    
-    @NotNull
-    @NotEmpty
-    private String modalidade;
+	public void setEstoque(Estoque estoque) {
+		this.estoque = estoque;
+	}
 
-   
-    @NotNull
-    @Size(min = 10, max = 12)
-    @Digits(fraction = 0, integer = 12)
-    @Column(name = "telefone")
-    private String phoneNumber;
+	public Integer getId() {
+		return id;
+	}
 
-    
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Integer getQtde() {
+		return qtde;
+	}
+
+	public void setQtde(Integer qtde) {
+		this.qtde = qtde;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public Double getTamanho() {
+		return tamanho;
+	}
+
+	public void setTamanho(Double tamanho) {
+		this.tamanho = tamanho;
+	}
+
+	public String getCor() {
+		return cor;
+	}
+
+	public void setCor(String cor) {
+		this.cor = cor;
+	}
+
+	public String getModelo() {
+		return modelo;
+	}
+
+	public void setModelo(String modelo) {
+		this.modelo = modelo;
+	}
+
+	public Double getValor() {
+		return valor;
+	}
+
+	public void setValor(Double valor) {
+		this.valor = valor;
+	}
 }

@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -31,14 +31,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-
-import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @SuppressWarnings("serial")
@@ -53,7 +48,8 @@ public class Evento implements Serializable {
 
     
 	@NotNull
-	@Size(min = 1, max = 25, message = "Mensagem customizada de erro! O nome do usuário deve ter no máximo 25 caracteres.")	 @Pattern(regexp = "[^0-9]*", message = "O nome de usuário não pode conter digitos.")
+	@Size(min = 1, max = 25, message = "Mensagem customizada de erro! O nome do usuário deve ter no máximo 25 caracteres.")	 
+	@Pattern(regexp = "[^0-9]*", message = "O nome de usuário não pode conter digitos.")
 	private String nome;
 	
 	private String descricao;
@@ -68,21 +64,29 @@ public class Evento implements Serializable {
 	
 	private String local;
 	
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+	@OneToOne
 	@NotNull
-    private Integer id_adm;
+    private Administrador id_adm;
 
-	
-	 @NotEmpty
-	 @NotNull
-	 @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
-	 private List<Member> membro = new ArrayList<Member>();
-	 
-	 @JoinTable(
-		      name = "inscricao_evento",
+	@JoinTable(
+		      name = "Inscricao_Evento",
 		      joinColumns = @JoinColumn(name = "id_evento"),
 		      inverseJoinColumns = @JoinColumn(name = "matricula_membro")
-	)
+		)
+	 
+	 @NotEmpty
+	 @NotNull
+	 @ManyToMany(cascade = CascadeType.MERGE)
+	 private List<Member> membro = new ArrayList<Member>();
+	
+	public void setMembro(List<Member> membro) {
+		this.membro = membro;
+	}
+
+	public void setId_adm(Administrador id_adm) {
+		this.id_adm = id_adm;
+	}
+
 	 
 	public Integer getId() {
 		return id;
@@ -146,14 +150,6 @@ public class Evento implements Serializable {
 
 	public void setLocal(String local) {
 		this.local = local;
-	}
-
-	public Integer getId_adm() {
-		return id_adm;
-	}
-
-	public void setId_adm(Integer id_adm) {
-		this.id_adm = id_adm;
 	}
 	
 	

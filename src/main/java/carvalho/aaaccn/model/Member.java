@@ -23,7 +23,6 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
@@ -64,6 +63,12 @@ public class Member implements Serializable {
     
     @NotNull
     @NotEmpty
+    private String datanasc;
+
+    private String alecond;
+
+	@NotNull
+    @NotEmpty
     private String endereco;
     
     @NotNull
@@ -76,27 +81,34 @@ public class Member implements Serializable {
     
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     private Carteirinha carteirinha;
-  
     
-    
-    public Carteirinha getCarteirinha() {
-		return carteirinha;
-	}
-
-	public void setCarteirinha(Carteirinha carteirinha) {
-		this.carteirinha = carteirinha;
-	}
-
+   
 	@NotNull
     @Size(min = 10, max = 12)
     @Digits(fraction = 0, integer = 12)
     @Column(name = "telefone")
     private String phoneNumber;
 
-	@ManyToMany(mappedBy = "inscricao_evento", fetch = FetchType.EAGER)
+	@ManyToMany(mappedBy = "membro", fetch = FetchType.EAGER)
     private List<Evento> evento = new ArrayList<Evento>();
 	
-    public Integer getMatricula() {
+    public List<Evento> getEvento() {
+		return evento;
+	}
+
+	public void setEvento(List<Evento> evento) {
+		this.evento = evento;
+	}
+	 public Carteirinha getCarteirinha() {
+			return carteirinha;
+		}
+
+		public void setCarteirinha(Carteirinha carteirinha) {
+			this.carteirinha = carteirinha;
+		}
+
+
+	public Integer getMatricula() {
         return matricula;
     }
 
@@ -129,6 +141,22 @@ public class Member implements Serializable {
         this.email = email;
     }
     
+    public String getDatanasc() {
+		return datanasc;
+	}
+
+	public void setDatanasc(String datanasc) {
+		this.datanasc = datanasc;
+	}
+    
+	public String getAlecond() {
+		return alecond;
+	}
+
+	public void setAlecond(String alecond) {
+		this.alecond = alecond;
+	}
+	
     public String getCurso() {
         return curso;
     }

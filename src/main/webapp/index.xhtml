@@ -1,97 +1,136 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-    JBoss, Home of Professional Open Source
-    Copyright 2013, Red Hat, Inc. and/or its affiliates, and individual
-    contributors by the @authors tag. See the copyright.txt in the
-    distribution for a full listing of individual contributors.
-
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
-    http://www.apache.org/licenses/LICENSE-2.0
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
--->
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:f="http://java.sun.com/jsf/core"
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml"
     xmlns:h="http://java.sun.com/jsf/html"
-    template="/WEB-INF/templates/default.xhtml">
-    <ui:define name="content">
-        <h1>Welcome to WildFly!</h1>
-
-        <div>
-            <p>You have successfully deployed a Java EE 7 Enterprise
-                Application.</p>
-            <h3>Your application can run on:</h3>
-            <img src="resources/gfx/wildfly_400x130.jpg" />
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+  <h:head>
+  <!-- h:nos forms. -->
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Navegadores</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="resources/css/style/style.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  </h:head>
+  <h:body>
+   <section id="home">
+    <nav class="nav">
+        <div class="container">
+            <div class="navegadores">
+                <a href="#home">Navegadores</a>
+            </div>
+            <div id="mainListDiv" class="main_list">
+                <ul class="navlinks">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="products.xhtml">Produtos</a></li>
+                    <li><a href="contact.xhtml">Contate-nos</a></li>
+                    <li><a href="member.xhtml">Seja Membro</a></li>
+                </ul>
+            </div>
         </div>
+      </nav>
+      <div class="banner" style="width: 100%;">
+        <table style="width: 100%;">
+       
+            <tr>
+                <td>
+                 <br></br>
+                    <h2>Seja bem vind@ a Navegadores!</h2>
+                   
+                </td>
+            </tr>
+            
+             <tr>
+             	<td>
+             		<h3>Esse é nosso site. Descubra, se informe, cadastre-se e visualize nossos produtos!</h3>
+             	</td>
+             </tr>
+             
+            <tr>
+                <td>
+                	<h4>Faça parte desta comunidade.</h4>
+                </td>
+              </tr>
+              
+             <tr >
+                <td>
+                	<button class="btn-member"><a href="member.html">SEJA MEMBRO</a></button>
+                </td>  
+              </tr>
+               
+             <tr>        
+                <td>
+                    <img src="resources/css/style/logo original + destaque.png"/>            
+                </td>
+            </tr>
+        </table>
+      </div>
+   </section>
+   
+   <section id="productd">
+    	<h3 style="text-align:center;">Nosso Produto Mais Amado</h3><br></br>
+    	<div class="product-card">
+        	<div class="product-tumb">
+          	<img src="resources/css/style/icon-raposa-color.png" alt=""/>
+        	</div>
+        	<div class="product-details">
+          		<span class="product-catagory">Tipo</span>
+          		<h4><a href="">Produto</a></h4>
+          		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, possimus nostrum!</p>
+          	<div class="product-bottom-details">
+            	<div class="product-links"><a href="products.html">Compre Agora!</a></div>
+          	</div>
+          	</div>
+        </div>
+   </section>
 
-        <h:form id="reg">
-            <h2>Member Registration</h2>
-            <p>Enforces annotation-based constraints defined on the
-                model class.</p>
-            <h:panelGrid columns="3" columnClasses="titleCell">
-                <h:outputLabel for="name" value="Name:" />
-                <h:inputText id="name" value="#{newMember.name}" />
-                <h:message for="name" errorClass="invalid" />
+   <section id="blogd">
+    <h3 style="text-align: center; padding-top: 150px;">Últimas Notícias do nosso Blog</h3>
+    <p style="text-align: center;">Para saber mais sobre nosso projeto.</p>
 
-                <h:outputLabel for="email" value="Email:" />
-                <h:inputText id="email" value="#{newMember.email}" />
-                <h:message for="email" errorClass="invalid" />
+    <div class="grid text-center" style="margin: 2%;">
+        <div class="g-col-4">
+          <a href="blog.xhtml"><img src="resources/css/style/note.jpg" height="300" width="100%" style="border-radius: 20px;"/></a><br></br>
+            <a href="blog.xhtml"><h4 style="text-align: justify;">Titulo</h4></a>
+            <p style="text-align: justify;"><a href="blog.xhtml">Subtitulo subtitulo subtitulo subtitulo subtitulo.</a></p>
+            <small style="text-align: justify;">DD/MM/AAAA hh:mm:ss</small>
+        </div>
+        <div class="g-col-4">
+          <a href="blog.xhtml"><img src="resources/css/style/flat.jpg" height="300" width="100%" style="border-radius: 20px;"/></a><br></br>
+            <a href="blog.xhtml"><h4 style="text-align: justify;">Titulo</h4></a>
+            <p style="text-align: justify;"><a href="blog.xhtml">Subtitulo subtitulo subtitulo subtitulo subtitulo.</a></p>
+            <small style="text-align: justify;">DD/MM/AAAA hh:mm:ss</small>
+        </div>
+        <div class="g-col-4">
+          <a href="blog.xhtml"><img src="resources/css/style/party.jpg" height="300" width="100%" style="border-radius: 20px;"/></a><br></br>
+            <a href="blog.xhtml"><h4 style="text-align: justify;">Titulo</h4></a>
+            <p style="text-align: justify;"><a href="blog.xhtml">Subtitulo subtitulo subtitulo subtitulo subtitulo.</a></p>
+            <small style="text-align: justify;">DD/MM/AAAA hh:mm:ss</small>
+        </div>
+    </div>
+    </section>
 
-                <h:outputLabel for="phoneNumber" value="Phone #:" />
-                <h:inputText id="phoneNumber"
-                    value="#{newMember.phoneNumber}" />
-                <h:message for="phoneNumber" errorClass="invalid" />
-            </h:panelGrid>
+    <section id="contact">
+        
 
-            <p>
-                <h:panelGrid columns="2">
-                    <h:commandButton id="register"
-                        action="#{memberController.register}"
-                        value="Register" styleClass="register" />
-                    <h:messages styleClass="messages"
-                        errorClass="invalid" infoClass="valid"
-                        warnClass="warning" globalOnly="true" />
-                </h:panelGrid>
-            </p>
-        </h:form>
-        <h2>Members</h2>
-        <h:panelGroup rendered="#{empty members}">
-            <em>No registered members.</em>
-        </h:panelGroup>
-        <h:dataTable var="_member" value="#{members}"
-            rendered="#{not empty members}"
-            styleClass="simpletablestyle">
-            <h:column>
-                <f:facet name="header">Id</f:facet>
-                #{_member.id}
-            </h:column>
-            <h:column>
-                <f:facet name="header">Name</f:facet>
-                #{_member.name}
-            </h:column>
-            <h:column>
-                <f:facet name="header">Email</f:facet>
-                #{_member.email}
-            </h:column>
-            <h:column>
-                <f:facet name="header">Phone #</f:facet>
-                #{_member.phoneNumber}
-            </h:column>
-            <h:column>
-                <f:facet name="header">REST URL</f:facet>
-                <a
-                    href="#{request.contextPath}/rest/members/#{_member.id}">/rest/members/#{_member.id}</a>
-            </h:column>
-            <f:facet name="footer">
-            REST URL for all members: <a
-                    href="#{request.contextPath}/rest/members">/rest/members</a>
-            </f:facet>
-        </h:dataTable>
-    </ui:define>
-</ui:composition>
+    </section>
+	<section id="footer" style="margin-top: 40%; padding: 3%; background-color: #3b3b3b;">
+      <div class="grid text-center">
+        <div class="g-col-4">
+          <img src="resources/css/style/icon-raposa-color.png" width="70" height="70"/><br></br>
+          <a href="https://cc.uffs.edu.br/"><img src="resources/css/style/logo-cc.png" width="80" height="80"/></a>
+        </div>  
+        <div class="g-col-4">
+          <a href=""><img src="resources/css/style/local.png" width="30" height="30"/></a>
+        </div>  
+        <div class="g-col-4">
+          <a href=""><img src="resources/css/style/instagram.png" width="30" height="30"/></a>
+        </div>  
+      </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </h:body>
+</html>
