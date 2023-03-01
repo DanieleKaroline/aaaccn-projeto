@@ -60,12 +60,9 @@ public class Member implements Serializable {
     @NotEmpty
     @Email(message = "Não é um endereço de E-mail válido")
     private String email;
-    
-    @NotNull
-    @NotEmpty
-    private String datanasc;
 
-    private String alecond;
+
+    private String alergia_condicao;
 
 	@NotNull
     @NotEmpty
@@ -141,20 +138,12 @@ public class Member implements Serializable {
         this.email = email;
     }
     
-    public String getDatanasc() {
-		return datanasc;
+	public String getAlergia_condicao() {
+		return alergia_condicao;
 	}
 
-	public void setDatanasc(String datanasc) {
-		this.datanasc = datanasc;
-	}
-    
-	public String getAlecond() {
-		return alecond;
-	}
-
-	public void setAlecond(String alecond) {
-		this.alecond = alecond;
+	public void setAlergia_condicao(String alergia_condicao) {
+		this.alergia_condicao = alergia_condicao;
 	}
 	
     public String getCurso() {
@@ -166,7 +155,7 @@ public class Member implements Serializable {
     }
     
     public String getModalidade() {
-        return email;
+        return modalidade;
     }
 
     public void setModalidade(String modalidade) {

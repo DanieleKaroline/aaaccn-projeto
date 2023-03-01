@@ -32,47 +32,40 @@
         </div>
       </nav>
       <div class="banner" style="width: 100%;">
-            <h2>Seja Membro</h2>
-          </div>
-       </section>
-       <br></br><br></br>
-       <h3 style="text-align: center;">Preencha o formulário!</h3>
-       <section id="form-member">
-        <div class="form-contat">
+        <h2>Encomenda</h2>
+      </div>
+      </section>
+      <br></br><br></br>
+      
+      <h4 style="text-align: center">Para realizar a encomenda dos produtos da AAACCN</h4>
+      
+      <br></br><br></br>
+      
+       <div class="form-contat">
             <h:form action="#">
-              <input type="number" placeholder="Matrícula" value="#{controllerMember.member.matricula}" required="true"></input><br></br><br></br>
-              <input type="text" placeholder="Nome" value="#{controllerMember.member.nome}" required="true"></input><br></br><br></br>
-              <label>Data de Nascimento:</label>
-              <input type="date" placeholder="Data de Nascimento" value="#{controllerMember.member.datanasc}" required="true"></input><br></br><br></br>
+              <input type="text" placeholder="CPF" value="#{controllerMember.member.matricula}" required="true" onkeypress="$(this).mask('00.000-000')"></input><br></br><br></br>
+              <input type="text" placeholder="Nome" value="#{controllerMember.member.nome}" required="true"></input><br></br><br></br>             
               <input type="email" placeholder="Email" value="#{controllerMember.member.email}" required="true"></input><br></br><br></br>
               <input type="tel" placeholder="Telefone" value="#{controllerMember.member.telefone}" required="true"></input><br></br><br></br>
-              <input type="text" placeholder="Endereço"  value="#{controllerMember.member.endereco}" required="true"></input><br></br><br></br>
-              <input type="text" placeholder="Alergia ou Condição" value="#{controllerMember.member.alecond}"></input><br></br><br></br>
-              <label for="curso">Selecione seu Curso: </label>
-              <!-- ver como fica o controller para o option -->
-              <select id="curso" name="curso">
-                <option value="agro">Agronomia</option>
-                <option value="cc">Ciência da Computação</option>
-                <option value="enga">Engenharia Ambiental</option>
-                <option value="geo">Geografia</option>
-                <option value="hist">História</option>
-                <option value="let">Letras</option>
-                <option value="mat">Matemática</option>
-                <option value="ped">Pedagogia</option>
-              </select><br></br>
+              
+              <h5 style="text-align: center;">Selecione:</h5><br></br>
+              <p>Sou membro da AAACCN</p><input  type="radio" name="option1" value="Option 1"></input><br></br><br></br>
+              <p>Não sou membro</p><input type="radio" name="option2" value="Option 2"></input><br></br><br></br>           
 
-              <label for="selmod">Selecione a sua forma de participação na AAACCN</label><br></br>
-              <input class="a" type="checkbox" name="option1" value="Option 1"> Apenas Membro</input><br></br><br></br>
-              <input class="a" type="checkbox" name="option2" value="Option 2"> Membro e Treinante</input><br></br><br></br>
-              <input class="a" type="checkbox" name="option3" value="Option 3"> Membro e Atleta</input><br></br><br></br>
-
+		      <h5 style="text-align: center;">Selecione o produto desejado:</h5>
+		      <input type="checkbox" name="produto1" value="p1"/><label>Produto 01!</label><br></br>   
+		      <input type="checkbox" name="produto2" value="p2"/><label>Produto 02!</label><br></br>   
+		      <input type="checkbox" name="produto3" value="p3"/><label>Produto 03!</label><br></br>   
+		      <br></br><br></br>       
               <input type="reset"></input><br></br><br></br>
               <input type="submit" value="Enviar"></input><br></br><br></br>
+              
+              
             </h:form>
         </div>
-       </section>
-
-       <section id="footer" style="margin-top: 25%; padding: 3%; background-color: #4d4d4d;">
+        
+      
+      <section id="footer" style="margin-top: 25%; padding: 3%; background-color: #4d4d4d;">
       <div class="grid text-center">
         <div class="g-col-4">
           <img src="resources/css/style/icon-raposa-color.png" width="70" height="70"/><br></br><br></br>

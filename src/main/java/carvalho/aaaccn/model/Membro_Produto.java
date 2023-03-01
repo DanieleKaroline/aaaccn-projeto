@@ -16,17 +16,116 @@
  */
 package carvalho.aaaccn.model;
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @SuppressWarnings("serial")
 //@Entity
 
 public class Membro_Produto implements Serializable {
 
+    @NotNull
+    @NotEmpty
+    private String dataped;
+    
+    @NotNull
+    @NotEmpty
+    private String datapag;
+
+	private String tipo_pag;
+    
+    private String comprovante;
+    
+	@NotNull
+    @NotEmpty
+    private String endereco;
+    
+    @NotNull
+    @NotEmpty
+    private String curso;
+    
+    @NotNull
+    @NotEmpty
+    private String modalidade;
+    
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    private Member member;
+    
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    private Product produto;
    
+    public String getDataped() {
+		return dataped;
+	}
+
+	public void setDataped(String dataped) {
+		this.dataped = dataped;
+	}
+
+	public String getDatapag() {
+		return datapag;
+	}
+
+	public void setDatapag(String datapag) {
+		this.datapag = datapag;
+	}
+
+	public String getTipo_pag() {
+		return tipo_pag;
+	}
+
+	public void setTipo_pag(String tipo_pag) {
+		this.tipo_pag = tipo_pag;
+	}
+
+	public String getComprovante() {
+		return comprovante;
+	}
+
+	public void setComprovante(String comprovante) {
+		this.comprovante = comprovante;
+	}
+
+	public String getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+
+	public String getCurso() {
+		return curso;
+	}
+
+	public void setCurso(String curso) {
+		this.curso = curso;
+	}
+
+	public String getModalidade() {
+		return modalidade;
+	}
+
+	public void setModalidade(String modalidade) {
+		this.modalidade = modalidade;
+	}
+
+	public Member getMember() {
+		return member;
+	}
+
+	public void setMember(Member member) {
+		this.member = member;
+	}
+
+	public Product getProduto() {
+		return produto;
+	}
+
+	public void setProduto(Product produto) {
+		this.produto = produto;
+	}
 }

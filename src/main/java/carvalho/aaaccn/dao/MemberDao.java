@@ -5,79 +5,55 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
+import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import javax.sql.DataSource;
 
 import carvalho.aaaccn.model.Member;
 
 public class MemberDao{
-
-    private DataSource ds;
-
-    public void setDataSource(DataSource ds) {
-        this.ds = ds;
+	@Inject
+	//Cria a conexão e controla a transação com o SGBD (usado pelo Hibernate)
+    private EntityManager em;
+	
+	public Member encontrarId(Integer id) {
+        return em.find(Member.class, id);
     }
-
-    public Member findByNomeMembro(String string) {
-        Connection con = null;
-        PreparedStatement ps = null;
-        try {
-            con = ds.getConnection();
-            ps = con.prepareStatement("select * from member where nome  = ?");
-            ps.setString(1, string);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                Member member =  new Member();
-                member.setMatricula(rs.getInt("matricula"));
-                member.setCpf(rs.getInt("cpf"));
-                member.setNome(rs.getString("nome"));
-                member.setEmail(rs.getString("email"));
-                member.setDatanasc(rs.getString("datanasc"));
-                member.setAlecond(rs.getString("alecond"));
-                member.setEndereco(rs.getString("endereco"));
-                member.setCurso(rs.getString("curso"));
-                member.setModalidade(rs.getString("modalidade"));
-                member.setPhoneNumber(rs.getString("telefone"));
-                
-                return member;
-            } else {
-                return null;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new RuntimeException(e);
-        } finally {
-            if (con != null) {
-                try {
-                    con.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+	
+	//Query usando a API Criteria do Hibernate
+	//Indicada para consultas complexas
+	public Boolean ehMemberUnico(String u) {
+		CriteriaBuilder cb = em.getCriteriaBuilder();
+		CriteriaQuery<Member> criteria = cb.createQuery(Member.class);
+        Root<Member> member = criteria.from(Member.class);
+        criteria.select(member);
+        criteria.where(cb.like(member.get("member"), u));
+        if (em.createQuery(criteria).getResultList().isEmpty())
+        	return true;
+        return false;
     }
-
-    /*public void atualizarUltimoAcesso(Integer id, Date data) {
-        Connection con = null;
-        PreparedStatement ps = null;
-        try {
-            con = ds.getConnection();
-            ps = con.prepareStatement("update membro set ultimo_acesso = ? where id = ?");
-            ps.setTimestamp(1, new java.sql.Timestamp(data.getTime()));
-            ps.setInt(2, id);
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            throw new RuntimeException(e);
-        } finally {
-            if (con != null) {
-                try {
-                    con.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }*/
-
+	
+	//Query usando a linguagem HQL do Hibernate
+	//Idnicada para consultas simples
+	public List<Member> listarTodos() {
+	    return em.createQuery("SELECT matricula, nome, curso, email, telefone FROM membro;", Member.class).getResultList();      
+	}
+	
+	public void salvar(Member m) {
+		em.persist(m);
+	}
+	
+	public void atualizar(Member m) {
+		em.merge(m);
+	}
+	
+	public void excluir(Member m) {
+		em.remove(em.getReference(Member.class, m.getCpf()));
+	}
+	
 }

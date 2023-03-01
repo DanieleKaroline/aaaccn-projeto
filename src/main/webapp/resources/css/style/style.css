@@ -135,7 +135,7 @@ a{
   height: 400px;
 }
 
-table{
+.table{
   padding-top: 12%;
   background: rgba( 255, 255, 255, 0.35 );
   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
@@ -315,3 +315,58 @@ form {
   #form-member{
     margin-top: 10%;
   }
+  
+  .form-log{
+  	border-radius: 41px;
+	background: linear-gradient(225deg, #fdfafa, #d4d3d3);;
+	box-shadow:  -25px 25px 42px #959595,
+             25px -25px 42px #dfdfdf;            
+  	padding: 5%;
+  	width: 25%;
+  	margin-top: 10%;
+  }
+  
+   .form-log button{
+    background-color: #6a4caf;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 150px;
+   }
+   .form-log a{
+   	text-decoration: none;
+   	color: white;
+   }
+   
+   .menu-cms{
+    width: 100% !important;
+    height: 10% !important;
+    text-align: end !important; 
+    background-color: #292828;
+}
+	.menu-cms table{
+    width: 100%;
+    line-height: 19.5px; 
+}
+
+.menu-cms a{
+    color: #dbdbdb;
+    text-decoration: none;
+    padding-inline: 3%;
+}
+.menu-cms a:hover{
+    color: rgb(78, 73, 131);
+}
+
+.i img{
+    margin-top: 8px;
+    width: 50px;
+    height: 55px;
+    margin-right: 50%;
+}
+
+.container img{
+	margin-left: 30%;
+	margin-top: 15%;
+	border-radius:50px;
+}
